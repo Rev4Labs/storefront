@@ -135,7 +135,7 @@ const cartReducer = (state = initialState, action) => {
         ],
       };
     case 'ADD_ORDER':
-      return action.cart;
+      return initialState;
     default:
       return state;
   }

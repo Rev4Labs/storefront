@@ -13,6 +13,7 @@ import {
   ButtonToolbar,
   Form,
 } from 'react-bootstrap';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import { updateQuantity, fetchCart } from '../store/cart';
 
@@ -21,6 +22,7 @@ import CheckOut from '../Components/CheckOutModal';
 const Cart = (props) => {
   const { cart } = props;
   const lineItems = cart.lineItems;
+  const navigate = useNavigate();
 
   async function handleRemove(cart, product, quantity) {
     await props.updateQuantity({ cart, product, quantity });
@@ -161,10 +163,13 @@ const Cart = (props) => {
                     <Col></Col>
                     <Col sm={4}>
                       <div className="d-grid gap-2">
-                        <CheckOut
-                          amount={(subtotal + 1).toFixed(2)}
-                          history={history}
-                        />
+                        {props.auth.id ? (
+                          <CheckOut amount={(subtotal + 1).toFixed(2)} />
+                        ) : (
+                          <button onClick={() => navigate('/login')}>
+                            Login to Checkout
+                          </button>
+                        )}
                       </div>
                     </Col>
                     <Col sm={1}></Col>
@@ -180,6 +185,7 @@ const Cart = (props) => {
 };
 const mapStateToProps = (state) => {
   return {
+    auth: state.auth,
     cart: state.cart,
   };
 };

@@ -41,7 +41,6 @@ export class MyPaymentForm extends Component {
             });
             let res = await response.json();
             if (res.payment.status === 'COMPLETED') {
-              console.log('inside completed ', res);
               this.props.addOrders({
                 first,
                 last,

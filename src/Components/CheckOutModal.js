@@ -16,7 +16,7 @@ import MyPaymentForm from './Payment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateQuantity, fetchCart } from '../store/cart';
-
+import { useNavigate } from 'react-router-dom';
 export class CheckOut extends Component {
   constructor(props) {
     super(props);
@@ -95,9 +95,10 @@ export class CheckOut extends Component {
     );
   };
 
-  handleCompleteTransaction = (history) => {
+  handleCompleteTransaction = () => {
+    // let navigate = useNavigate();
     this.setState({ transactionComplete: true });
-    // history.push('/products');
+    // navigate('/products');
   };
 
   handleClose() {
@@ -163,11 +164,6 @@ export class CheckOut extends Component {
 
     return !hasErrors && !hasEmptyFields;
   }
-
-  //q: how do you pass in the history prop to this component?
-  //a: use withRouter from react-router-dom to wrap the component in the export statement at the bottom of the file
-  //q: give me an example on the next line of how to use withRouter
-  //a: export withRouter(CheckOut)
   render() {
     const { cart } = this.props;
     const lineItems = cart.lineItems;
