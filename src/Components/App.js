@@ -12,6 +12,7 @@ import { loginWithToken, fetchCart } from '../store';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ThankYou from './ThankYou';
+import AboutStars from './AboutStars';
 
 class App extends Component {
   componentDidMount() {
@@ -38,6 +39,7 @@ class App extends Component {
             <Route path="/users/:id/orders" element={<OrderHistory />} />
             <Route path="/admin" element={<AdminDashboard />} />
             <Route path="/thankyou" element={<ThankYou />} />
+            <Route path="/aboutstars" element={<AboutStars />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Fragment>
