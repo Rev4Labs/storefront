@@ -1,0 +1,5 @@
+QUIET=true
+PORT=3000
+DATABASE_URL="postgres://localhost/born_to_code_storefront"
+SQUARE_ACCESS_TOKEN="BlahBlahBlah"
+POSTMARK_API_KEY="BlahBlahBlah"
